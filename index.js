@@ -80,11 +80,10 @@ finalScore(inning, 9) might return:
 function finalScore(inning, numInning){
   let home = 0;
   let away = 0;
-  for(i = 0; i < numInning; i++){
+  for(let i = 0; i < numInning; i++){
     home = home + inning();
     away = away + inning();
-    // console.log(`inning ${i + 1}: ${home}`)
-    // console.log(`inning ${i + 1}: ${away}`)
+    
   }
   return {"Home" : home,
           "Away" : away,
@@ -102,8 +101,8 @@ Create a function called `scoreboard` that accepts the following parameters:
 (3) A number of innings
 
 and returns the score at each pont in the game, like so:
-1st inning: awayTeam - homeTeam
-2nd inning: awayTeam - homeTeam
+1st inning: awayTeam - homeTeam 
+2nd inning: awayTeam - homeTeam 
 3rd inning: awayTeam - homeTeam
 4th inning: awayTeam - homeTeam
 5th inning: awayTeam - homeTeam
@@ -114,8 +113,37 @@ and returns the score at each pont in the game, like so:
 Final Score: awayTeam - homeTeam */
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+// function scoreboard(getInningScore, inning, numInning){
+//   let home = 0;
+//   let away = 0;
+//   let homeSum = 0;
+//   let awaySum = 0;
+//   for(let i = 1; i < numInning; i++){
+//     home = home + inning();
+//     away = away + inning();
+//     awaySum += away;
+//     homeSum += home;
+//     console.log(`${i} Inning: ${away} - ${home}`);
+    
+//   }
+//   console.log(`Final Score: ${awaySum} - ${homeSum}`); 
+// }
+
+// scoreboard(finalScore, inning, 10);
+
+
+function scoreboard(getInningScore, inning, numInning){
+  let sumScore = {home: 0,
+                  away: 0
+                }
+  for(let i = 1; i < numInning; i++){
+    const InningScores = getInningScore(inning, 1);
+    console.log(InningScores);
+    sumScore.home += InningScores.Home;
+    sumScore.away += InningScores.Away;
+  }
+  console.log(sumScore)
 }
 
+scoreboard(finalScore, inning, 10);
 
