@@ -27,11 +27,12 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ *    counter1 code has another function insde a function called counterMaker. Nested function.
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ *    the first one is using a closure because it is a nested function.
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *    Closure is useful because inner function still works even after outerfuction is terminated.
+ *    So in scenarios, where inner function can be changing, counter1 code would be better.
 */
 
 // counter1 code
@@ -56,11 +57,11 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  return score = Math.floor(Math.random()*3);
+   
 }
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -76,11 +77,21 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(inning, numInning){
+  let home = 0;
+  let away = 0;
+  for(i = 0; i < numInning; i++){
+    home = home + inning();
+    away = away + inning();
+    // console.log(`inning ${i + 1}: ${home}`)
+    // console.log(`inning ${i + 1}: ${away}`)
+  }
+  return {"Home" : home,
+          "Away" : away,
+};
 }
+console.log(finalScore(inning, 9));
+
 
 /* Task 4: 
 
